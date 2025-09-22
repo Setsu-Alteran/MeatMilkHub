@@ -1,0 +1,241 @@
+/* Основний контейнер сторінки */
+.about-page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Inter', sans-serif; /* Використовуйте ваш основний шрифт */
+    color: #333;
+}
+
+/* Секція Hero (перший екран) */
+.hero-about {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/images/warehouse.jpg'); /* Додайте відповідне зображення */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 80px 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-about h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.hero-about p {
+    font-size: 1.4em;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+    color: #f0f0f0;
+}
+
+/* Заголовки секцій */
+.section-title {
+    font-size: 2.2em;
+    color: #2e7d32; /* Ваш акцентний зелений колір */
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #a5d6a7; /* Світліший відтінок зеленого */
+    border-radius: 2px;
+}
+
+/* Секція "Огляд компанії" */
+.company-overview {
+    display: flex;
+    flex-wrap: wrap; /* Для адаптивності */
+    align-items: center;
+    gap: 40px;
+    padding: 40px 0;
+    margin-bottom: 40px;
+}
+
+.overview-content {
+    flex: 1;
+    min-width: 300px; /* Мінімальна ширина, щоб контент не стискався */
+}
+
+.overview-content p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.overview-content .section-title {
+    text-align: left;
+    margin-bottom: 25px;
+    padding-bottom: 0;
+}
+
+.overview-content .section-title::after {
+    left: 0;
+    transform: translateX(0);
+}
+
+.overview-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.overview-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Секція "Наші переваги" */
+.our-advantages-about {
+    background-color: #f8f8f8;
+    padding: 50px 20px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+
+.advantages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.advantage-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advantage-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.advantage-item h3 {
+    font-size: 1.5em;
+    color: #2e7d32;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.advantage-item p {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Секція "Заклик до дії" */
+.call-to-action-about {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #e0f2f7; /* М'який блакитний фон */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.call-to-action-about p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.btn-about {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #1a73e8; /* Акцентний синій */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-about:hover {
+    background-color: #1565c0;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Медіа-запити для адаптивності */
+@media (max-width: 992px) {
+    .hero-about h1 {
+        font-size: 2.8em;
+    }
+    .hero-about p {
+        font-size: 1.2em;
+    }
+    .company-overview {
+        flex-direction: column;
+        text-align: center;
+    }
+    .overview-content .section-title {
+        text-align: center;
+    }
+    .overview-content .section-title::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-about {
+        padding: 60px 15px;
+    }
+    .hero-about h1 {
+        font-size: 2.2em;
+    }
+    .hero-about p {
+        font-size: 1em;
+    }
+    .section-title {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+    .company-overview {
+        gap: 30px;
+    }
+    .overview-content,
+    .overview-image {
+        min-width: auto;
+        width: 100%;
+    }
+    .our-advantages-about,
+    .call-to-action-about {
+        padding: 40px 15px;
+    }
+    .advantage-item {
+        padding: 25px;
+    }
+    .advantage-item h3 {
+        font-size: 1.3em;
+    }
+    .call-to-action-about p {
+        font-size: 1em;
+    }
+    .btn-about {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}

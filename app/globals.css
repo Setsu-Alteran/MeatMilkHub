@@ -1,0 +1,616 @@
+body {
+    font-family: 'Inter', sans-serif; /* Сучасний шрифт */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333; /* Більш м'який колір тексту */
+}
+
+h1, h2, h3 {
+    color: #1a73e8; /* Сучасний акцентний синій або темний зелений */
+    text-align: center;
+    margin-bottom: 20px;
+}
+h2{
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #1a73e8;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #ffffff; /* Світліший хедер */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); /* М'якша тінь */
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: #1a73e8; /* Акцентний колір */
+}
+
+.nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    position: relative;
+}
+.nav a {
+    color: #333; /* Темніший колір тексту меню */
+    font-weight: 500;
+    padding: 10px 15px;
+    border-radius: 5px; /* Легке заокруглення */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.nav a:hover {
+    background-color: #e0f2f7; /* Світлий фон при наведенні */
+    color: #1a73e8;
+}
+
+.dropdown {
+    position: relative;
+}
+.dropdown-btn {
+    cursor: pointer;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Виразніша, але м'якша тінь */
+    border-radius: 8px; /* Більш заокруглені кути */
+    padding: 10px;
+    z-index: 1000;
+    min-width: 200px;
+}
+
+.dropdown-menu a {
+    display: block;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+    color: #1a73e8;
+}
+
+.btn {
+    padding: 12px 25px; /* Збільшити padding */
+    background-color: #1a73e8; /* Акцентний колір */
+    color: #fff;
+    border: none;
+    border-radius: 8px; /* Більш заокруглені кути */
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* М'якша тінь */
+    transition: all 0.3s ease; /* Зменшити тривалість переходу */
+    font-weight: 600; /* Жирніший текст */
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background-color: #1565c0; /* Трохи темніший при наведенні */
+}
+/* --- Секція Hero Banner --- */
+.hero-banner {
+    /* Додайте реальне фонове зображення або встановіть яскравий градієнт */
+    background: linear-gradient(rgba(46, 125, 50, 0.7), rgba(26, 115, 232, 0.7)), url('/images/cheesss.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px; /* Збільшимо внутрішні відступи для більшого простору */
+    border-radius: 0 0 15px 15px; /* Заокруглення знизу */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Краща тінь */
+    display: flex; /* Використовуємо flexbox для центрування вмісту */
+    align-items: center;
+    justify-content: center;
+    min-height: 450px; /* Мінімальна висота банера */
+}
+
+.banner-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-banner h1 {
+    font-size: 3.8em; /* Збільшуємо розмір заголовка */
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Тінь для тексту */
+}
+
+.hero-banner p {
+    font-size: 1.5em; /* Збільшуємо розмір тексту */
+    margin-bottom: 40px;
+    line-height: 1.5;
+    opacity: 0.9;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.banner-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Відступ між кнопками */
+    flex-wrap: wrap; /* Дозволити кнопкам переноситись на новий рядок на малих екранах */
+}
+
+/* Стилі для основної кнопки (наприклад, "Переглянути каталог") */
+.btn-primary-banner {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: #ffc107; /* Яскравий акцентний колір (жовтий) */
+    color: #333; /* Темний текст на жовтій кнопці */
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary-banner:hover {
+    background-color: #e0a800; /* Темніший жовтий при наведенні */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Стилі для вторинної кнопки (наприклад, "Дізнатися більше") */
+.btn-secondary-banner {
+    display: inline-block;
+    padding: 16px 40px;
+    background-color: transparent; /* Прозорий фон */
+    color: #fff; /* Білий текст */
+    text-decoration: none;
+    border: 2px solid #fff; /* Біла обводка */
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 700;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary-banner:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Трохи прозоріший білий фон при наведенні */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Адаптивність банеру */
+@media (max-width: 992px) {
+    .hero-banner h1 {
+        font-size: 3em;
+    }
+    .hero-banner p {
+        font-size: 1.3em;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-banner {
+        padding: 80px 15px;
+        min-height: 400px;
+    }
+    .hero-banner h1 {
+        font-size: 2.2em;
+    }
+    .hero-banner p {
+        font-size: 1.1em;
+        margin-bottom: 30px;
+    }
+    .banner-actions {
+        flex-direction: column; /* Кнопки в стовпець на мобільних */
+        gap: 15px;
+    }
+    .btn-primary-banner, .btn-secondary-banner {
+        width: 90%; /* Кнопки займають майже всю ширину */
+        max-width: 300px; /* Обмеження ширини */
+        margin: 0 auto;
+        padding: 14px 30px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-banner h1 {
+        font-size: 1.8em;
+    }
+    .hero-banner p {
+        font-size: 1em;
+    }
+}
+
+.advantages {
+    display: flex;
+    flex-wrap: wrap; /* Для адаптивності */
+    justify-content: center;
+    gap: 20px; /* Додати проміжок між елементами */
+    background-color: #f8f8f8; /* Світліший фон */
+    padding: 60px 20px;
+}
+
+.advantage {
+    text-align: center;
+    width: 28%; /* Зменшити ширину, щоб краще виглядав на більших екранах */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box; /* Важливо для коректних розрахунків ширини з padding */
+    /* Використовуємо flex-basis для контролю ширини.
+       calc() дозволяє врахувати gap.
+       Мінус 20px - це для gap між елементами (2 елементи * 20px / 3 колонки).
+       Якщо у вас 3 колонки, то це (100% - 2*gap) / 3.
+       Для 3 колонок: (100% - 40px) / 3 = 33.33% - 13.33px.
+       Простіше задати ширину близько 30-32% і дозволити flexbox розподілити простір.
+    */
+    flex: 1 1 calc(33% - 20px); /* 1 1 - flex-grow flex-shrink; calc(33% - gap) */
+    max-width: calc(33% - 20px); /* Максимальна ширина для трьох колонок */
+}
+
+.advantage:hover {
+    transform: translateY(-8px); /* Помітніший підйом */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.advantage h3 {
+    color: #2e7d32; /* Можна залишити зелений для переваг */
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.advantage p {
+    color: #555; /* Більш нейтральний колір */
+}
+
+/* Приклад стилю для Image - якщо це ваш власний компонент, то стилі будуть застосовані до внутрішнього img */
+.advantage img {
+    width: 120px; /* Зменшити розмір іконок */
+    height: 120px;
+    object-fit: contain; /* Щоб зображення не обрізалося */
+    border-radius: 50%; /* Якщо хочете круглі іконки */
+    background-color: #e0f2f7; /* Легкий фон для іконки */
+    padding: 10px;
+}
+
+/* Медіа-запит для мобільних пристроїв */
+@media (max-width: 768px) {
+    .advantages {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .advantage {
+        flex: none;
+        width: 90%;
+        max-width: 90%;
+        margin-bottom: 20px;
+    }
+}
+
+.products {
+    background-color: #ffffff; /* Світлий фон */
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.product_drid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Збільшити minmax */
+    gap: 30px; /* Більший проміжок */
+    max-width: 1200px; /* Обмежити ширину сітки */
+    margin: 0 auto; /* Відцентрувати сітку */
+}
+
+.product_card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); /* М'якша тінь */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.product_card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.product_card img {
+    width: 100%; /* Зображення займає всю ширину картки */
+    max-height: 200px; /* Обмежити висоту */
+    object-fit: cover;
+    border-radius: 8px; /* Заокруглені кути зображення */
+    margin-bottom: 15px;
+}
+
+.product_card h3 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product_card .price {
+    font-size: 18px;
+    color: #2e7d32;
+    font-weight: 700; /* Дуже жирний */
+    margin-bottom: 15px;
+}
+
+.product_card button {
+    width: auto; /* Дозволити кнопці мати власну ширину */
+    padding: 10px 20px;
+    background-color: #2e7d32; /* Зелена кнопка */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.product_card button:hover {
+    background-color: #1b5e20;
+}
+
+.contacts {
+    padding: 60px 20px;
+    background: #f0f5f9; /* М'який сіро-блакитний фон */
+}
+
+.contacts form {
+    max-width: 600px; /* Збільшити ширину форми */
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.contacts input,
+.contacts textarea {
+    padding: 12px; /* Збільшити padding */
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.contacts textarea {
+    min-height: 120px; /* Збільшити мінімальну висоту */
+    resize: vertical; /* Дозволити змінювати розмір по вертикалі */
+}
+
+.contacts button {
+    background-color: #1a73e8; /* Використати акцентний колір */
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.contacts button:hover {
+    background-color: #1565c0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    padding: 25px; /* Збільшити padding */
+    text-align: center;
+    background: #222; /* Темніший футер */
+    color: #fff;
+    font-size: 14px;
+}
+
+/* --- Загальні стилі для секцій (можуть бути вже у вас) --- */
+.section-title {
+    font-size: 2.5em;
+    color: #2e7d32; /* Ваш акцентний зелений колір */
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: #a5d6a7; /* Світліший відтінок зеленого */
+    border-radius: 2px;
+}
+
+/* --- Секція "Наші партнери" --- */
+.partners-section {
+    padding: 60px 20px;
+    background-color: #f2f7fc; /* Світлий фон */
+    text-align: center;
+    max-width: 1200px;
+    margin: 40px auto; /* Відступи від інших секцій */
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.partners-description {
+    font-size: 1.1em;
+    color: #666;
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    line-height: 1.6;
+}
+
+.partners-logos-grid {
+    display: grid;
+    /* Адаптивна сітка: мінімум 120px, максимум скільки поміститься */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px; /* Відступи між логотипами */
+    justify-items: center; /* Центруємо логотипи в комірках */
+    align-items: center; /* Вирівнюємо по центру по вертикалі */
+    padding: 20px;
+}
+
+.partner-logo-item {
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Для центрування зображення всередині */
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Фіксована висота для однакового вигляду */
+}
+
+.partner-logo-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Стилі для зображень у Next.js Image компоненті */
+.partner-logo-item img {
+    max-width: 100%;
+    height: auto;
+    /* object-fit: contain;  Вже встановлено у Image компоненті */
+}
+
+
+/* --- Секція "Зверніться до нас" (коротка версія) --- */
+.short-contact-section {
+    padding: 60px 20px;
+    background-color: #e8f5e9; /* М'який зелений фон */
+    text-align: center;
+    max-width: 1200px;
+    margin: 40px auto; /* Відступи */
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.contact-short-description {
+    font-size: 1.15em;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+.contact-details-row {
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Відступ між елементами контактів */
+    margin-bottom: 40px;
+    flex-wrap: wrap; /* Дозволяє елементам переноситися на мобільних */
+}
+
+.contact-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.contact-icon {
+    font-size: 1.8em; /* Збільшуємо розмір іконки-смайла */
+    color: #2e7d32; /* Колір іконки */
+}
+
+.contact-detail-item a {
+    color: #1a73e8; /* Синій колір для посилань */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-detail-item a:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #1a73e8; /* Акцентний синій */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background-color: #1565c0;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Адаптивність (медіа-запити) --- */
+@media (max-width: 768px) {
+    .section-title {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .partners-section,
+    .short-contact-section {
+        padding: 40px 15px;
+        margin: 30px auto;
+    }
+    .partners-description,
+    .contact-short-description {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .partners-logos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Менші лого на мобільних */
+        gap: 20px;
+    }
+    .partner-logo-item {
+        height: 80px;
+        padding: 10px;
+    }
+    .contact-details-row {
+        flex-direction: column; /* Елементи контактів у колонку */
+        gap: 20px;
+    }
+    .contact-detail-item {
+        font-size: 1.1em;
+        justify-content: center; /* Центруємо елементи в колонці */
+    }
+    .btn-primary {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+}

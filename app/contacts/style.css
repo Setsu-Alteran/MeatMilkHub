@@ -1,0 +1,108 @@
+.contact-section {
+    padding: 40px 20px;
+    background-color: #f9f9f9;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    text-align: center; /* Центрування заголовка секції */
+}
+
+.section-title {
+    font-size: 2.2em;
+    color: #2e7d32; /* Ваш акцентний зелений колір */
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: #a5d6a7; /* Світліший відтінок зеленого */
+    border-radius: 2px;
+}
+
+.contact-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 30px;
+    max-width: 500px; /* Обмеження ширини картки */
+    margin: 0 auto; /* Центрування картки */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    text-align: left; /* Текст всередині картки вирівнюється по лівому краю */
+}
+
+.contact-name {
+    font-size: 1.6em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 20px;
+    text-align: center; /* Ім'я всередині картки по центру */
+}
+
+.contact-info {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #555;
+    display: flex;
+    align-items: center;
+}
+
+.info-label {
+    font-weight: bold;
+    color: #2e7d32; /* Колір для назви поля */
+    margin-right: 8px;
+    min-width: 150px; /* Щоб мітки були вирівняні, якщо потрібно */
+}
+
+.contact-info a {
+    color: #1a73e8; /* Синій для посилань */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+    color: #0d47a1;
+    text-decoration: underline;
+}
+
+.contact-description {
+    font-style: italic;
+    color: #777;
+    margin-top: 25px;
+    line-height: 1.6;
+    text-align: center; /* Опис по центру */
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 30px 15px;
+    }
+
+    .contact-card {
+        padding: 20px;
+        max-width: 90%; /* Збільшити ширину картки на мобільних */
+    }
+
+    .contact-name {
+        font-size: 1.4em;
+    }
+
+    .contact-info {
+        flex-direction: column; /* Мітка і значення стають у колонку */
+        align-items: flex-start; /* Вирівнюємо по лівому краю */
+    }
+
+    .info-label {
+        margin-right: 0;
+        margin-bottom: 5px;
+        min-width: auto;
+    }
+}

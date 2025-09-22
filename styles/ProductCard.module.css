@@ -1,0 +1,107 @@
+.productCard {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%; /* Ensure card takes full width of its grid cell */
+    box-sizing: border-box; /* Include padding and border in width */
+}
+
+.productCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+.productTitle {
+    font-size: 1.6em;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.productImageWrapper {
+    width: 100%;
+    height: 200px; /* Fixed height for image container */
+    overflow: hidden; /* Hide overflowing parts of image */
+    border-radius: 8px;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.productImageWrapper img {
+    /* Next.js Image component handles these by default with layout="responsive" */
+    /* object-fit: cover; */
+    /* width: 100%; */
+    /* height: 100%; */
+}
+
+.productPrice {
+    font-size: 1.3em;
+    color: #2e7d32;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.productStock {
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.inStock {
+    color: #4CAF50; /* Green for in stock */
+}
+
+.outOfStock {
+    color: #f44336; /* Red for out of stock */
+}
+
+.addToCartButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #1a73e8; /* Blue button for action */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.addToCartButton:hover:not(:disabled) {
+    background-color: #1565c0;
+    transform: translateY(-2px);
+}
+
+.addToCartButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.cartIcon {
+    font-size: 1.2em;
+}
+
+.notifyMe {
+    font-size: 0.85em;
+    color: #666;
+    margin-top: 10px;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.notifyMe:hover {
+    color: #1a73e8;
+}
