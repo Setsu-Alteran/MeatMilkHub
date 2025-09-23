@@ -49,9 +49,11 @@ export default function Header() {
                 </div> */}
             </div>
         </nav>
-        <button className="btn">
+        <a href="/cart" >
+        <button  className="btn">
             <FaShoppingCart /> Замовити
         </button>
+                </a>
     </header>
     
   );

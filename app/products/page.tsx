@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import ProductCard, { ProductItem, Manufacturer, Category } from '@/components/ProductCards';
-import styles from '@/styles/ProductsPage.module.css';
+import styles from './ProductsPage.module.css';
 
 // --- Дані продуктів ---
 
@@ -35,18 +35,24 @@ const manufacturers: Manufacturer[] = [
 ];
 
 const allProductsData: ProductItem[] = [
-  { id: 0, title: 'Сир Моцарелла', src: '/images/chees.jpg', price: 'Від 350 грн/кг', isInStock: 'в наявності', categoryId: 1, manufacturerId: 2 },
-  { id: 1, title: 'Сир Чеддер', src: '/images/chees.jpg', price: 'Від 400 грн/кг', isInStock: 'в наявності', categoryId: 1, manufacturerId: 3 },
-  { id: 2, title: 'Сир Пармезан', src: '/images/chees.jpg', price: 'Від 500 грн/кг', isInStock: 'в наявності', categoryId: 1, manufacturerId: 2 },
-  { id: 3, title: 'Ковбаса "Домашня"', src: '/images/sausage.jpeg', price: 'Від 180 грн/кг', isInStock: 'в наявності', categoryId: 2, manufacturerId: 4 },
-  { id: 4, title: 'Ковбаса "Салямі"', src: '/images/sausage.jpeg', price: 'Від 250 грн/кг', isInStock: 'немає в наявності', categoryId: 2, manufacturerId: 5 },
-  { id: 5, title: 'Шинка', src: '/images/sausage.jpeg', price: 'Від 220 грн/кг', isInStock: 'в наявності', categoryId: 2, manufacturerId: 6 },
-  { id: 6, title: 'Крупи Гречані', src: '/images/krupu_yashuku.jpg', price: 'Від 20 грн/кг', isInStock: 'в наявності', categoryId: 3, manufacturerId: 7 },
-  { id: 7, title: 'Рис Басматі', src: '/images/krupu_yashuku.jpg', price: 'Від 35 грн/кг', isInStock: 'в наявності', categoryId: 3, manufacturerId: 8 },
-  { id: 8, title: 'Заморожені овочі', src: '/images/frozen_mixed_vegetables.jpg', price: 'Від 100 грн/кг', isInStock: 'в наявності', categoryId: 4, manufacturerId: 10 },
-  { id: 9, title: 'Заморожені фрукти', src: '/images/frozen_fruits.jpg', price: 'Від 120 грн/кг', isInStock: 'в наявності', categoryId: 4, manufacturerId: 11 },
-  { id: 10, title: 'Напівфабрикати Вареники', src: '/images/dumplings.jpg', price: 'Від 80 грн/кг', isInStock: 'в наявності', categoryId: 5, manufacturerId: 13 },
-  { id: 11, title: 'Напівфабрикати Пельмені', src: '/images/pelmeni.jpg', price: 'Від 90 грн/кг', isInStock: 'в наявності', categoryId: 5, manufacturerId: 14 },
+  { id: 0, title: 'Сир Моцарелла 0.5 кг', src: '/images/chees.jpg', price: '175.00', isInStock: 'в наявності', categoryId: 1, manufacturerId: 2 },
+  { id: 1, title: 'Сир Моцарелла 1 кг', src: '/images/chees.jpg', price: '350.00', isInStock: 'в наявності', categoryId: 1, manufacturerId: 2 },
+  { id: 2, title: 'Сир Чеддер 0.5 кг', src: '/images/chees.jpg', price: '200.00', isInStock: 'в наявності', categoryId: 1, manufacturerId: 3 },
+  { id: 3, title: 'Сир Чеддер 1 кг', src: '/images/chees.jpg', price: '400.00', isInStock: 'в наявності', categoryId: 1, manufacturerId: 3 },
+  { id: 4, title: 'Сир Пармезан 0.5 кг', src: '/images/chees.jpg', price: '250.00', isInStock: 'в наявності', categoryId: 1, manufacturerId: 2 },
+  { id: 5, title: 'Сир Пармезан 1 кг', src: '/images/chees.jpg', price: '500.00', isInStock: 'в наявності', categoryId: 1, manufacturerId: 2 },
+  { id: 6, title: 'Ковбаса "Домашня" 0.5 кг', src: '/images/sausage.jpeg', price: '90.00', isInStock: 'в наявності', categoryId: 2, manufacturerId: 4 },
+  { id: 7, title: 'Ковбаса "Домашня" 1 кг', src: '/images/sausage.jpeg', price: '180.00', isInStock: 'в наявності', categoryId: 2, manufacturerId: 4 },
+  { id: 8, title: 'Ковбаса "Салямі" 0.5 кг', src: '/images/sausage.jpeg', price: '125.00', isInStock: 'немає в наявності', categoryId: 2, manufacturerId: 5 },
+  { id: 9, title: 'Ковбаса "Салямі" 1 кг', src: '/images/sausage.jpeg', price: '250.00', isInStock: 'немає в наявності', categoryId: 2, manufacturerId: 5 },
+  { id: 10, title: 'Шинка 0.5 кг', src: '/images/sausage.jpeg', price: '110.00', isInStock: 'в наявності', categoryId: 2, manufacturerId: 6 },
+  { id: 11, title: 'Шинка 1 кг', src: '/images/sausage.jpeg', price: '220.00', isInStock: 'в наявності', categoryId: 2, manufacturerId: 6 },
+  { id: 12, title: 'Крупи Гречані 1 кг', src: '/images/krupu_yashuku.jpg', price: '20.00', isInStock: 'в наявності', categoryId: 3, manufacturerId: 7 },
+  { id: 13, title: 'Рис Басматі 1 кг', src: '/images/krupu_yashuku.jpg', price: '35.00', isInStock: 'в наявності', categoryId: 3, manufacturerId: 8 },
+  { id: 14, title: 'Заморожені овочі 1 кг', src: '/images/frozen_mixed_vegetables.jpg', price: '100.00', isInStock: 'в наявності', categoryId: 4, manufacturerId: 10 },
+  { id: 15, title: 'Заморожені фрукти 1 кг', src: '/images/frozen_fruits.jpg', price: '120.00', isInStock: 'в наявності', categoryId: 4, manufacturerId: 11 },
+  { id: 16, title: 'Напівфабрикати Вареники 1 кг', src: '/images/dumplings.jpg', price: '80.00', isInStock: 'в наявності', categoryId: 5, manufacturerId: 13 },
+  { id: 17, title: 'Напівфабрикати Пельмені 1 кг', src: '/images/pelmeni.jpg', price: '90.00', isInStock: 'в наявності', categoryId: 5, manufacturerId: 14 },
 ];
 
 export default function ProductsPage() {

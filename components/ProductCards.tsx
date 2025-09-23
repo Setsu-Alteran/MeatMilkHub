@@ -2,6 +2,7 @@ import React from 'react';
 import Image from "next/image";
 import { BsCartPlus } from "react-icons/bs";
 import styles from '@/styles/ProductCard.module.css'; // CSS модуль для картки продукту
+import { useCart } from "@/context/CartContext";
 
 export type ProductItem = {
     id: number;
@@ -28,7 +29,8 @@ type ProductCardProps = {
     item: ProductItem;
 };
 
-export default function ProductCard({ item }: ProductCardProps) {    
+export default function ProductCard({ item }: ProductCardProps) {   
+  const { addToCart } = useCart(); 
   const isAvailable = item.isInStock === "в наявності";
 
   return (
@@ -46,10 +48,16 @@ export default function ProductCard({ item }: ProductCardProps) {
             />
         </div>
         <p className={styles.productPrice}>{item.price}</p>
-        <p className={`${styles.productStock} ${isAvailable ? styles.inStock : styles.outOfStock}`}>
+        <p 
+          className={`${styles.productStock} ${
+            isAvailable ? styles.inStock : styles.outOfStock
+          }`}>
             {item.isInStock}
         </p>
-        <button className={styles.addToCartButton} disabled={!isAvailable}>
+        <button 
+          className={styles.addToCartButton} 
+          disabled={!isAvailable}
+          onClick={() => addToCart(item)}>
             <BsCartPlus className={styles.cartIcon} /> {/* Іконка */}
             {isAvailable ? 'Додати до кошика' : 'Немає в наявності'}
         </button>
