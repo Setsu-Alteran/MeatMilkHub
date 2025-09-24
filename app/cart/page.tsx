@@ -2,27 +2,51 @@
 
 import { useCart } from "@/context/CartContext";
 import { useState } from "react";
+import { IMaskInput } from "react-imask";
+import { useForm, Controller } from "react-hook-form";
+
 import styles from "./CartPage.module.css";
+
+type FormValues = {
+  name: string;
+  phone: string;
+  address: string;
+};
 
 export default function CartPage() {
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
 
   const total = cart.reduce(
     (sum, item) => sum + parseFloat(item.price) * item.quantity,
     0
   );
 
-  const handleSubmit = () => {
-    const order = {
-      customer: { name, phone, address },
-      items: cart,
-      total,
-    };
-    console.log("Нове замовлення:", order);
-    alert("Замовлення відправлено (див. console.log)");
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm<FormValues>({
+    mode: "onBlur", // валідація при втраті фокусу
+  });
+
+  const onSubmit  = (data: FormValues) => {
+
+    const itemsList = cart
+    .map(item => `${item.title} - ${item.quantity}`)
+    .join(";\n ");
+
+    const order = itemsList;
+    const messageOrder = `
+      Замовлення відправлено ✅
+      Ви замовили: ${itemsList}
+      ------------------------
+      Сума замовлення: ${total.toFixed(2)} грн
+      Дякуємо ${data.name}, що користуєтеся нашими послугами!
+      Очікуйте на доставку протягом 24 годин 🚚
+    `
+    console.log(order);
+    alert(messageOrder);
     clearCart();
   };
 
@@ -54,27 +78,48 @@ export default function CartPage() {
 
           <h3>Разом: {total.toFixed(2)} грн</h3>
 
-          <div className={styles.orderForm}>
+          <form className={styles.orderForm} onSubmit={handleSubmit(onSubmit)}>
             <input
               type="text"
               placeholder="Ім'я"
-              value={name}
-              onChange={e => setName(e.target.value)}
+              {...register("name", { required: "Введіть ім'я" })}
+              className={errors.name ? styles.errorInput : ""}
             />
-            <input
-              type="tel"
-              placeholder="Телефон"
-              value={phone}
-              onChange={e => setPhone(e.target.value)}
+            {errors.name && <p className={styles.errorText}>{errors.name.message}</p>}
+
+            <Controller
+              name="phone"
+              control={control}
+              rules={{
+                required: "Введіть номер телефону",
+                pattern: {
+                  value: /^\+380 \(\d{2}\) \d{3}-\d{2}-\d{2}$/,
+                  message: "Невірний формат телефону",
+                },
+              }}
+              render={({ field }) => (
+                <IMaskInput
+                  {...field}
+                  mask="+380 (00) 000-00-00"
+                  placeholder="+380 (__) ___-__-__"
+                  className={errors.phone ? styles.errorInput : ""}
+                />
+              )}
             />
+            {errors.phone && <p className={styles.errorText}>{errors.phone.message}</p>}
+
             <input
               type="text"
               placeholder="Адреса"
-              value={address}
-              onChange={e => setAddress(e.target.value)}
+              {...register("address", { required: "Введіть адресу" })}
+              className={errors.address ? styles.errorInput : ""}
             />
-            <button onClick={handleSubmit}>Відправити замовлення</button>
-          </div>
+            {errors.address && <p className={styles.errorText}>{errors.address.message}</p>}
+
+            <button type="submit" className={styles.submitBtn}>
+              Відправити замовлення
+            </button>
+          </form>
         </>
       )}
     </div>

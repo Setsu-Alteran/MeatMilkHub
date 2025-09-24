@@ -1,6 +1,6 @@
 "use client";
 
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
 import { ProductItem } from "@/components/ProductCards";
 
 export type CartItem = ProductItem & { quantity: number };
@@ -17,6 +17,19 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>([]);
+
+  // --- 1. Відновлюємо кошик з LocalStorage при завантаженні ---
+  useEffect(() => {
+    const saved = localStorage.getItem("cart");
+    if (saved) {
+      setCart(JSON.parse(saved));
+    }
+  }, []);
+
+  // --- 2. Зберігаємо кошик у LocalStorage при кожній зміні ---
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product: ProductItem) => {
     setCart(prev => {
