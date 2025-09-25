@@ -8,7 +8,7 @@ export type ProductItem = {
     id: number;
     title: string;
     src: string,
-    price: string
+    price: number
     isInStock: string
     categoryId: number;
     manufacturerId: number; 

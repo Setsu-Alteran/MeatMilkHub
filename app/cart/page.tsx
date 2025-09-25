@@ -16,10 +16,7 @@ type FormValues = {
 export default function CartPage() {
   const { cart, updateQuantity, removeFromCart, clearCart } = useCart();
 
-  const total = cart.reduce(
-    (sum, item) => sum + parseFloat(item.price) * item.quantity,
-    0
-  );
+  const totalSum = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const {
     register,
@@ -36,16 +33,33 @@ export default function CartPage() {
     .map(item => `${item.title} - ${item.quantity}`)
     .join(";\n ");
 
-    const order = itemsList;
+    const order = {
+      items: cart.map(item => ({
+        productId: item.id,
+        name: item.title,
+        quantity: item.quantity,
+        price: item.price,
+        total: item.price * item.quantity,
+      })),
+      customer: {
+        name: data.name,
+        phone: data.phone,
+        address: data.address,
+      },
+      totalAmount: totalSum,
+    };
+
+    // Далі – відправляєш на сервер або тимчасово в консоль
+    console.log("Order created:", order);
+
     const messageOrder = `
       Замовлення відправлено ✅
       Ви замовили: ${itemsList}
       ------------------------
-      Сума замовлення: ${total.toFixed(2)} грн
+      Сума замовлення: ${totalSum.toFixed(2)} грн
       Дякуємо ${data.name}, що користуєтеся нашими послугами!
       Очікуйте на доставку протягом 24 годин 🚚
     `
-    console.log(order);
     alert(messageOrder);
     clearCart();
   };
@@ -76,7 +90,7 @@ export default function CartPage() {
             ))}
           </ul>
 
-          <h3>Разом: {total.toFixed(2)} грн</h3>
+          <h3>Разом: {totalSum.toFixed(2)} грн</h3>
 
           <form className={styles.orderForm} onSubmit={handleSubmit(onSubmit)}>
             <input
