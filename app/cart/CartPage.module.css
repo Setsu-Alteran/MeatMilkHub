@@ -15,10 +15,13 @@
   color: #333;
 }
 
-.cartItems {
+.cartItem {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
 }
 
 .cartItem {
@@ -30,6 +33,27 @@
   border-radius: 8px;
   background: #fafafa;
   gap: 10px;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantityControls button {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f9f9f9;
+}
+
+.quantityControls button:hover {
+  background: #eee;
 }
 
 .itemName {
@@ -65,6 +89,10 @@
   color: #222;
 }
 
+.subtotal {
+  font-weight: bold;
+}
+
 .orderButton {
   margin-top: 20px;
   padding: 12px 20px;
@@ -81,6 +109,7 @@
 .orderButton:hover {
   background: #0059c1;
 }
+
 .orderForm {
   display: flex;
   flex-direction: column;
@@ -137,4 +166,17 @@
 
 .submitBtn:hover {
   background: #005bb5;
+}
+
+.removeBtn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.removeBtn:hover {
+  background: #e60000;
 }

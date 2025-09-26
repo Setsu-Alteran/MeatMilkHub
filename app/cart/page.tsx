@@ -75,17 +75,34 @@ export default function CartPage() {
           <ul className={styles.cartList}>
             {cart.map(item => (
               <li key={item.id} className={styles.cartItem}>
-                <span>{item.title}</span>
-                <span>{item.price} грн</span>
-                <input
-                  type="number"
-                  min={1}
-                  value={item.quantity}
-                  onChange={e =>
-                    updateQuantity(item.id, parseInt(e.target.value))
-                  }
-                />
-                <button onClick={() => removeFromCart(item.id)}>Видалити</button>
+                <span className={styles.title}>{item.title}</span>
+                <span className={styles.price}>{item.price} грн</span>
+                <div className={styles.quantityControls}>
+                  <button
+                    onClick={() =>
+                      updateQuantity(item.id, Math.max(1, item.quantity - 1))
+                    }
+                  >
+                    ➖
+                  </button>
+                  <span>  {item.quantity}  </span>
+                  <button
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                  >
+                    ➕
+                  </button>
+                </div>
+
+                {/* Проміжна сума */}
+                <span className={styles.removeBtn}>
+                  {(item.price * item.quantity).toFixed(2)} грн
+                </span>
+                <button 
+                  className={styles.removeBtn}
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  Видалити
+                </button>
               </li>
             ))}
           </ul>
