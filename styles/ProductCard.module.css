@@ -42,11 +42,13 @@
 }
 
 .productPrice {
-    font-size: 1.3em;
+    font-size: 1.4em;
     color: #2e7d32;
     font-weight: 700;
     margin-bottom: 10px;
+    letter-spacing: 0.5px;
 }
+
 
 .productStock {
     font-size: 0.9em;

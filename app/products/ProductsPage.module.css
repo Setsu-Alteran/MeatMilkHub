@@ -58,6 +58,36 @@
     justify-items: center; /* Center items within grid cells */
 }
 
+/* Сортування */
+.sortContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.sortContainer label {
+    font-size: 1.1em;
+    color: #555;
+    font-weight: 500;
+}
+
+.sortSelect {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    cursor: pointer;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sortSelect:hover {
+    border-color: #2e7d32;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
     .categoryNav {

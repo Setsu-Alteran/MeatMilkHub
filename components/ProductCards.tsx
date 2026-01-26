@@ -8,7 +8,7 @@ export type ProductItem = {
     id: number;
     title: string;
     src: string,
-    price: string
+    price: number
     isInStock: string
     categoryId: number;
     manufacturerId: number; 
@@ -32,6 +32,13 @@ type ProductCardProps = {
 export default function ProductCard({ item }: ProductCardProps) {   
   const { addToCart } = useCart(); 
   const isAvailable = item.isInStock === "в наявності";
+  const formatPrice = (value: number) => {
+    return new Intl.NumberFormat('uk-UA', {
+      style: 'currency',
+      currency: 'UAH',
+      minimumFractionDigits: 2
+    }).format(value);
+  };
 
   return (
    <div className={styles.productCard}> {/* Використовуємо CSS модулі */}
@@ -47,7 +54,7 @@ export default function ProductCard({ item }: ProductCardProps) {
                 quality={80} // Якість зображення
             />
         </div>
-        <p className={styles.productPrice}>{item.price}</p>
+        <p className={styles.productPrice}>{formatPrice(item.price)}</p>
         <p 
           className={`${styles.productStock} ${
             isAvailable ? styles.inStock : styles.outOfStock
